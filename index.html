@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>ВайбДент — Буклет</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --teal:       #009688;
+  --teal-d:     #00695C;
+  --teal-dd:    #004D40;
+  --teal-l:     #4DB6AC;
+  --teal-pale:  #E0F2F1;
+  --coral:      #FF5722;
+  --coral-l:    #FF8A65;
+  --white:      #fff;
+  --dark:       #0D1B2A;
+  --gray:       #546E7A;
+  --light:      #F5FFFE;
+}
+body {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+  background:#ccc;
+  padding:28px 16px;
+}
+.label {
+  text-align:center;font-size:12px;font-weight:800;
+  color:#666;margin:20px 0 8px;letter-spacing:3px;text-transform:uppercase;
+}
+.sheet {
+  display:flex;width:297mm;height:210mm;
+  margin:0 auto 6px;
+  box-shadow:0 8px 40px rgba(0,0,0,.25);
+  overflow:hidden;
+}
+.panel { width:99mm;height:210mm;flex-shrink:0;overflow:hidden; }
+
+/* ═══════════════ П1 — ОБЛОЖКА ═══════════════ */
+.p1 {
+  background: linear-gradient(150deg,#004D40 0%,#00796B 40%,#009688 70%,#26C6DA 100%);
+  display:flex;flex-direction:column;
+  padding:7mm 6mm 0;color:white;
+  gap:2mm;
+}
+.p1-illus {
+  padding:0 2mm;
+  flex:1;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  min-height:0;
+}
+
+/* SVG-паттерн зубов поверх градиента */
+.p1-bg-disabled {
+  display:none;
+  opacity:0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M20 10 Q15 5 10 10 Q5 15 8 25 Q10 35 20 40 Q30 35 32 25 Q35 15 30 10 Q25 5 20 10Z' fill='white'/%3E%3Cpath d='M60 10 Q55 5 50 10 Q45 15 48 25 Q50 35 60 40 Q70 35 72 25 Q75 15 70 10 Q65 5 60 10Z' fill='white'/%3E%3Cpath d='M40 50 Q35 45 30 50 Q25 55 28 65 Q30 75 40 80 Q50 75 52 65 Q55 55 50 50 Q45 45 40 50Z' fill='white'/%3E%3C/svg%3E");
+  background-size:80px 80px;
+}
+
+/* Верхняя часть обложки */
+.p1-top {
+  position:relative;z-index:2;
+  padding:10mm 8mm 6mm;
+  flex:none;
+}
+.p1-logo-row {
+  display:flex;align-items:center;gap:3mm;margin-bottom:3mm;
+}
+.p1-logo-icon {
+  width:14mm;height:14mm;
+  background:rgba(255,255,255,.18);
+  border:1.5px solid rgba(255,255,255,.35);
+  border-radius:4mm;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;
+}
+.p1-logo-text { }
+.p1-logo-name {
+  font-size:24px;font-weight:900;letter-spacing:-.5px;line-height:1;
+}
+.p1-logo-sub {
+  font-size:8px;letter-spacing:2.5px;text-transform:uppercase;opacity:.7;margin-top:1mm;
+}
+
+/* Слоган — главный элемент */
+.p1-slogan {
+  font-size:23px;font-weight:900;line-height:1.15;
+  margin-bottom:1.5mm;
+}
+.p1-slogan span {
+  display:block;
+  background:rgba(255,255,255,.18);
+  border-radius:2mm;
+  padding:0.5mm 0;
+}
+.p1-slogan .accent {
+  color:#FFE082;background:none;padding:0;
+}
+
+.p1-subslogan {
+  font-size:10.5px;font-weight:600;opacity:.85;line-height:1.3;
+  margin-bottom:2mm;
+}
+
+.p1-tags {
+  display:flex;gap:2mm;flex-wrap:wrap;
+}
+.p1-tag {
+  background:rgba(255,255,255,.15);
+  border:1.5px solid rgba(255,255,255,.4);
+  border-radius:20px;
+  padding:2mm 5mm;font-size:10px;font-weight:700;
+}
+
+/* Нижняя полоска с контактами и QR */
+
+.p1-illustration {
+  width:100%;
+  padding:0 4mm;
+  margin-top:3mm;
+}
+.p1-footer {
+  width:100%;
+  background:rgba(0,0,0,.3);
+  display:flex;align-items:center;gap:2.5mm;
+  padding:3.5mm 5mm;
+  flex-shrink:0;
+}
+.p1-footer-contacts {
+  flex:1;display:flex;flex-direction:column;gap:1.5mm;
+}
+.p1-contact {
+  display:flex;align-items:center;gap:1.5mm;
+  font-size:8.5px;font-weight:600;opacity:.92;
+}
+.p1-contact-icon { font-size:12px;width:4mm;text-align:center; }
+.p1-footer-qr {
+  background:white;
+  border-radius:2.5mm;
+  padding:1.5mm;
+  width:20mm;height:20mm;
+  flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;
+}
+.p1-footer-qr img { width:100%;height:auto;border-radius:1mm; }
+
+/* ═══════════════ П2 — БОЛИ ═══════════════ */
+.p2 {
+  background:#fff;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:8mm 7mm;
+  border-left:1px solid #e0f7f4;border-right:1px solid #e0f7f4;
+}
+.panel-h {
+  font-size:21px;font-weight:900;color:var(--dark);line-height:1.2;
+}
+.panel-h em { font-style:normal;color:var(--teal); }
+
+.pain-list { display:flex;flex-direction:column;gap:2.5mm;margin-top:4mm; }
+.pain-card {
+  display:flex;gap:3mm;align-items:flex-start;
+  background:linear-gradient(135deg,#FAFFFE,#F0FDFB);
+  border-radius:3mm;padding:3.5mm;
+  border-left:4px solid var(--teal-l);
+  box-shadow:0 2px 8px rgba(0,150,136,.08);
+}
+.pain-icon { font-size:22px;flex-shrink:0;line-height:1; }
+.pain-t { font-size:11px;font-weight:800;color:var(--dark);margin-bottom:.8mm;line-height:1.3; }
+.pain-s { font-size:9.5px;color:var(--teal);font-weight:600; }
+
+.p2-cta {
+  background:linear-gradient(135deg,var(--teal-d),var(--teal-l));
+  border-radius:4mm;padding:4.5mm;color:white;
+  text-align:center;font-size:12px;font-weight:800;
+  box-shadow:0 4px 16px rgba(0,150,136,.3);
+}
+
+/* ═══════════════ П3 — ЦИФРЫ ═══════════════ */
+.p3 {
+  background:linear-gradient(170deg,#E8F5E9,#E0F2F1 50%,#F5FFFE);
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:8mm 7mm;
+}
+.metrics-grid {
+  display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:3mm;
+}
+.m-card {
+  background:white;border-radius:4mm;
+  padding:5mm 3mm;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  box-shadow:0 3px 14px rgba(0,150,136,.12);
+  position:relative;overflow:hidden;
+}
+.m-card::before {
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--teal),var(--teal-l));
+}
+.m-card.c::before { background:linear-gradient(90deg,var(--coral),var(--coral-l)); }
+.m-num {
+  font-size:34px;font-weight:900;color:var(--teal);
+  line-height:1;letter-spacing:-1px;
+}
+.m-card.c .m-num { color:var(--coral); }
+.m-lbl { font-size:9px;color:var(--gray);font-weight:600;margin-top:2mm;line-height:1.3; }
+.p3-foot {
+  background:linear-gradient(135deg,var(--teal-d),var(--teal));
+  border-radius:3mm;padding:3.5mm;color:white;
+  font-size:10px;font-weight:700;text-align:center;
+  box-shadow:0 3px 12px rgba(0,150,136,.3);
+}
+
+/* ═══════════════ П4 — МОДУЛИ ═══════════════ */
+.p4 {
+  background:#fff;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:8mm 7mm;
+}
+.mod-grid {
+  display:grid;grid-template-columns:1fr 1fr;gap:2.5mm;margin-top:4mm;
+}
+.mod {
+  background:linear-gradient(135deg,#F5FFFE,#E8F5E9);
+  border-radius:3mm;padding:4mm 3mm;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:1.5mm;
+  box-shadow:0 2px 8px rgba(0,150,136,.08);
+  border:1px solid rgba(0,150,136,.1);
+  position:relative;
+}
+.mod-i { font-size:22px; }
+.mod-l { font-size:8.5px;font-weight:700;color:var(--dark);line-height:1.3; }
+.new-chip {
+  position:absolute;top:-1mm;right:-1mm;
+  background:linear-gradient(135deg,var(--coral),var(--coral-l));
+  color:white;font-size:7px;font-weight:800;
+  padding:1mm 2mm;border-radius:0 3mm 0 3mm;
+}
+
+/* ═══════════════ П5 — КАК НАЧАТЬ ═══════════════ */
+.p5 {
+  background:linear-gradient(170deg,#fff,#E0F2F1);
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:8mm 7mm;
+  border-left:1px solid #e0f7f4;border-right:1px solid #e0f7f4;
+}
+.step-list { display:flex;flex-direction:column;gap:3mm;margin-top:4mm; }
+.step-card {
+  display:flex;gap:3.5mm;align-items:flex-start;
+  background:white;border-radius:3.5mm;padding:3.5mm;
+  box-shadow:0 2px 10px rgba(0,150,136,.1);
+}
+.step-n {
+  width:11mm;height:11mm;
+  background:linear-gradient(135deg,var(--teal),var(--teal-l));
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:900;color:white;flex-shrink:0;
+  box-shadow:0 3px 10px rgba(0,150,136,.35);
+}
+.step-t { font-size:12px;font-weight:800;color:var(--dark);margin-bottom:1mm; }
+.step-d { font-size:9px;color:var(--gray);line-height:1.4; }
+.free-block {
+  background:linear-gradient(135deg,var(--coral),var(--coral-l));
+  border-radius:4mm;padding:5mm;color:white;text-align:center;
+  box-shadow:0 4px 16px rgba(255,87,34,.35);
+}
+.free-big { font-size:20px;font-weight:900;display:block;line-height:1.1; }
+.free-sm  { font-size:9px;opacity:.9;margin-top:1.5mm;font-weight:600; }
+
+/* ═══════════════ П6 — CTA ═══════════════ */
+.p6 {
+  background:#fff;
+  display:flex;flex-direction:column;align-items:center;overflow:hidden;
+}
+.p6-head {
+  width:100%;
+  background:linear-gradient(135deg,var(--teal-dd),var(--teal),var(--teal-l));
+  padding:8mm 7mm 7mm;text-align:center;color:white;position:relative;
+}
+.p6-head::after {
+  content:'';position:absolute;bottom:-4mm;left:50%;transform:translateX(-50%);
+  border-left:9mm solid transparent;border-right:9mm solid transparent;
+  border-top:4.5mm solid var(--teal-l);
+}
+.p6-htitle { font-size:22px;font-weight:900;line-height:1.2; }
+.p6-hsub   { font-size:10px;opacity:.85;margin-top:2mm;font-weight:600; }
+
+.p6-body {
+  display:flex;flex-direction:column;align-items:center;
+  padding:8mm 7mm 5mm;width:100%;
+}
+.qr-wrap {
+  background:white;border:3px solid var(--teal);border-radius:5mm;
+  padding:3mm;box-shadow:0 6px 24px rgba(0,150,136,.2);margin-bottom:2.5mm;
+}
+.qr-wrap img { width:34mm;height:34mm;display:block;border-radius:2mm; }
+.qr-lbl { font-size:13px;font-weight:900;color:var(--teal);margin-bottom:4mm; }
+
+.bonuses { width:100%;display:flex;flex-direction:column;gap:2mm;margin-bottom:4mm; }
+.bonus {
+  display:flex;align-items:center;gap:3mm;
+  background:linear-gradient(135deg,#F0FDF9,#E8F5E9);
+  border-radius:3mm;padding:3.5mm 4mm;border-left:4px solid var(--teal);
+}
+.bonus-i { font-size:20px;flex-shrink:0; }
+.bonus-t { font-size:10px;font-weight:800;color:var(--dark);line-height:1.2; }
+.bonus-d { font-size:8px;color:var(--gray);margin-top:.5mm; }
+
+.p6-contacts {
+  width:100%;border-top:1.5px solid #E0F2F1;
+  padding-top:3mm;display:flex;flex-direction:column;gap:2mm;
+}
+.ct {
+  display:flex;align-items:center;gap:2.5mm;
+  font-size:10px;font-weight:600;color:var(--dark);
+}
+.ct-i { font-size:14px;width:5mm;text-align:center; }
+
+@media print {
+  body{background:white;padding:0;}
+  .label{display:none;}
+  .sheet{box-shadow:none;page-break-after:always;margin:0;}
+}
+</style>
+</head>
+<body>
+
+<div class="label">⬛ ЛИЦЕВАЯ СТОРОНА ⬛</div>
+<div class="sheet">
+
+  <!-- П3 — ЦИФРЫ -->
+  <div class="panel p3">
+    <div>
+      <div class="panel-h">Что вы<br><em>получаете</em></div>
+      <div class="metrics-grid">
+        <div class="m-card"><div class="m-num">+25%</div><div class="m-lbl">загрузка кресел</div></div>
+        <div class="m-card"><div class="m-num">−60%</div><div class="m-lbl">неявок пациентов</div></div>
+        <div class="m-card c"><div class="m-num">+40%</div><div class="m-lbl">повторных визитов</div></div>
+        <div class="m-card"><div class="m-num">0%</div><div class="m-lbl">потерь данных</div></div>
+      </div>
+    </div>
+    <div class="p3-foot">☁️ Облако · Мобильное приложение · Бэкапы</div>
+  </div>
+
+  <!-- П2 — БОЛИ -->
+  <div class="panel p2">
+    <div>
+      <div class="panel-h">Вам<br><em>знакомо?</em> 🤔</div>
+      <div class="pain-list">
+        <div class="pain-card">
+          <div class="pain-icon">📅</div>
+          <div><div class="pain-t">Дыры в расписании</div><div class="pain-s">→ Умное расписание заполняет «окна»</div></div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">📋</div>
+          <div><div class="pain-t">Карточки в Excel и тетрадях</div><div class="pain-s">→ Облачные медкарты с зубной формулой</div></div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">💸</div>
+          <div><div class="pain-t">Не видите сколько зарабатываете</div><div class="pain-s">→ Дашборд с выручкой в реальном времени</div></div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🔄</div>
+          <div><div class="pain-t">70% пациентов не возвращаются</div><div class="pain-s">→ Авто-напоминания о профосмотрах</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="p2-cta">✅ ВайбДент решает всё это</div>
+  </div>
+
+  <!-- П1 — ОБЛОЖКА -->
+  <div class="panel p1">
+    <div class="p1-bg"></div>
+
+    <!-- Логотип -->
+    <div class="p1-logo-row">
+      <div class="p1-logo-icon">🦷</div>
+      <div class="p1-logo-text">
+        <div class="p1-logo-name">ВайбДент</div>
+        <div class="p1-logo-sub">CRM · Стоматология</div>
+      </div>
+    </div>
+
+    <!-- Слоган -->
+    <div class="p1-slogan">
+      Больше пациентов.<br>
+      <span class="accent">Меньше хаоса.</span>
+    </div>
+    <div class="p1-subslogan">
+      CRM-система, которая работает<br>вместо вас — пока вы лечите
+    </div>
+
+    <!-- Теги -->
+    <div class="p1-tags">
+      <span class="p1-tag">Просто</span>
+      <span class="p1-tag">Облачно</span>
+      <span class="p1-tag">Доступно</span>
+    </div>
+
+    <!-- Иллюстрация: CRM + стоматология -->
+    <div class="p1-illus">
+      <svg viewBox="0 0 250 100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <g opacity="0.28">
+
+          <!-- ══ МОНИТОР (CRM дашборд) ══ -->
+          <rect x="4" y="5" width="118" height="80" rx="5" fill="none" stroke="white" stroke-width="2"/>
+          <!-- Шапка монитора -->
+          <rect x="4" y="5" width="118" height="14" rx="5" fill="white" opacity="0.85"/>
+          <rect x="4" y="13" width="118" height="6" fill="white" opacity="0.85"/>
+          <!-- Три dot-кнопки -->
+          <circle cx="16" cy="12" r="2.5" fill="#26C6DA"/>
+          <circle cx="24" cy="12" r="2.5" fill="#FFE082"/>
+          <circle cx="32" cy="12" r="2.5" fill="#EF9A9A"/>
+          <!-- Название в шапке -->
+          <rect x="42" y="9.5" width="45" height="4.5" rx="2" fill="#009688" opacity="0.6"/>
+
+          <!-- Sidebar слева -->
+          <rect x="4" y="19" width="22" height="66" fill="white" opacity="0.08"/>
+          <!-- Иконки сайдбара -->
+          <rect x="9" y="24" width="12" height="2.5" rx="1" fill="white" opacity="0.5"/>
+          <rect x="9" y="31" width="12" height="2.5" rx="1" fill="white" opacity="0.5"/>
+          <rect x="9" y="38" width="12" height="2.5" rx="1" fill="white" opacity="0.5"/>
+          <rect x="9" y="45" width="8"  height="2.5" rx="1" fill="white" opacity="0.35"/>
+
+          <!-- Карточка-пациент 1 -->
+          <rect x="30" y="22" width="86" height="16" rx="3" fill="white" opacity="0.15"/>
+          <circle cx="39" cy="30" r="5" fill="white" opacity="0.6"/>
+          <rect x="48" y="25" width="35" height="3" rx="1" fill="white" opacity="0.7"/>
+          <rect x="48" y="31" width="24" height="2.5" rx="1" fill="white" opacity="0.45"/>
+          <rect x="98" y="26" width="14" height="7" rx="2" fill="#26C6DA" opacity="0.6"/>
+          <rect x="100" y="28" width="10" height="3" rx="1" fill="white" opacity="0.9"/>
+
+          <!-- Карточка-пациент 2 -->
+          <rect x="30" y="42" width="86" height="16" rx="3" fill="white" opacity="0.12"/>
+          <circle cx="39" cy="50" r="5" fill="white" opacity="0.5"/>
+          <rect x="48" y="45" width="28" height="3" rx="1" fill="white" opacity="0.65"/>
+          <rect x="48" y="51" width="38" height="2.5" rx="1" fill="white" opacity="0.4"/>
+          <rect x="98" y="46" width="14" height="7" rx="2" fill="#4DB6AC" opacity="0.55"/>
+          <rect x="100" y="48" width="10" height="3" rx="1" fill="white" opacity="0.9"/>
+
+          <!-- График выручки внизу -->
+          <rect x="30" y="62" width="86" height="20" rx="3" fill="white" opacity="0.08"/>
+          <polyline points="35,77 47,68 59,72 71,64 83,67 95,60 107,63 112,58"
+                    fill="none" stroke="#FFE082" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="35,77 47,68 59,72 71,64 83,67 95,60 107,63 112,58"
+                    fill="none" stroke="white" stroke-width="0.8" stroke-linecap="round" opacity="0.3"/>
+
+          <!-- Подставка монитора -->
+          <rect x="56" y="85" width="14" height="4" rx="1.5" fill="white" opacity="0.4"/>
+          <rect x="48" y="89" width="30" height="3" rx="1.5" fill="white" opacity="0.3"/>
+
+          <!-- ══ СМАРТФОН (уведомления) ══ -->
+          <rect x="134" y="8" width="46" height="84" rx="7" fill="none" stroke="white" stroke-width="2"/>
+          <!-- Экран -->
+          <rect x="136" y="18" width="42" height="64" fill="white" opacity="0.07"/>
+          <!-- Notch -->
+          <rect x="148" y="10" width="18" height="5" rx="2.5" fill="white" opacity="0.5"/>
+          <!-- Home bar -->
+          <rect x="149" y="87" width="16" height="2.5" rx="1.5" fill="white" opacity="0.45"/>
+
+          <!-- Уведомление 1 — новая запись -->
+          <rect x="139" y="22" width="36" height="18" rx="3" fill="white" opacity="0.2"/>
+          <circle cx="145" cy="31" r="3.5" fill="#26C6DA" opacity="0.8"/>
+          <!-- галочка внутри круга -->
+          <polyline points="143,31 144.5,32.5 147,29.5" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+          <rect x="152" y="24" width="20" height="2.5" rx="1" fill="white" opacity="0.7"/>
+          <rect x="152" y="29" width="14" height="2" rx="1" fill="white" opacity="0.45"/>
+          <rect x="152" y="33" width="18" height="2" rx="1" fill="white" opacity="0.4"/>
+
+          <!-- Уведомление 2 — напоминание -->
+          <rect x="139" y="44" width="36" height="18" rx="3" fill="white" opacity="0.15"/>
+          <circle cx="145" cy="53" r="3.5" fill="#FFE082" opacity="0.8"/>
+          <rect x="143" y="51.5" width="4" height="1.5" rx="0.5" fill="#004D40"/>
+          <rect x="144.5" y="50" width="1.5" height="2" rx="0.5" fill="#004D40"/>
+          <rect x="152" y="46" width="22" height="2.5" rx="1" fill="white" opacity="0.7"/>
+          <rect x="152" y="51" width="15" height="2" rx="1" fill="white" opacity="0.45"/>
+          <rect x="152" y="55" width="19" height="2" rx="1" fill="white" opacity="0.4"/>
+
+          <!-- Уведомление 3 — финансы -->
+          <rect x="139" y="66" width="36" height="14" rx="3" fill="white" opacity="0.12"/>
+          <circle cx="145" cy="73" r="3.5" fill="#81C784" opacity="0.8"/>
+          <text x="143" y="75" font-size="5" fill="#004D40" font-weight="bold">₽</text>
+          <rect x="152" y="68" width="18" height="2.5" rx="1" fill="white" opacity="0.65"/>
+          <rect x="152" y="73" width="13" height="2" rx="1" fill="white" opacity="0.4"/>
+
+          <!-- ══ СИЛУЭТ ВРАЧА ══ -->
+          <!-- Голова -->
+          <circle cx="216" cy="22" r="9" fill="white" opacity="0.5"/>
+          <!-- Тело / халат -->
+          <path d="M203 92 Q203 58 207 52 Q210 46 216 44 Q222 46 225 52 Q229 58 229 92Z"
+                fill="white" opacity="0.4"/>
+          <!-- Воротник / шея -->
+          <rect x="213" y="31" width="6" height="12" rx="2" fill="white" opacity="0.4"/>
+          <!-- Крест на халате (медицина) -->
+          <rect x="213" y="60" width="6" height="14" rx="1" fill="#26C6DA" opacity="0.55"/>
+          <rect x="210" y="64" width="12" height="6"  rx="1" fill="#26C6DA" opacity="0.55"/>
+          <!-- Руки -->
+          <path d="M207 52 Q198 60 197 70 Q198 73 200 72 Q203 68 205 62" fill="white" opacity="0.35"/>
+          <path d="M225 52 Q234 60 235 70 Q234 73 232 72 Q229 68 227 62" fill="white" opacity="0.35"/>
+          <!-- Планшет в руке -->
+          <rect x="228" y="60" width="14" height="20" rx="2" fill="none" stroke="white" stroke-width="1.5" opacity="0.7"/>
+          <rect x="230" y="63" width="10" height="13" rx="1" fill="white" opacity="0.15"/>
+          <rect x="231" y="65" width="8" height="1.5" rx="0.5" fill="white" opacity="0.5"/>
+          <rect x="231" y="69" width="6" height="1.5" rx="0.5" fill="white" opacity="0.4"/>
+          <rect x="231" y="73" width="8" height="1.5" rx="0.5" fill="white" opacity="0.5"/>
+
+          <!-- Линии связи: монитор → смартфон → врач -->
+          <line x1="122" y1="44" x2="134" y2="44" stroke="white" stroke-width="1" stroke-dasharray="3,2" opacity="0.4"/>
+          <line x1="180" y1="53" x2="203" y2="62" stroke="white" stroke-width="1" stroke-dasharray="3,2" opacity="0.35"/>
+
+        </g>
+      </svg>
+    </div>
+
+    <!-- Футер с контактами и QR -->
+    <div class="p1-footer">
+      <div class="p1-footer-contacts">
+        <div class="p1-contact"><span class="p1-contact-icon">📞</span>+7 (928) 557-63-66</div>
+        <div class="p1-contact"><span class="p1-contact-icon">✉️</span>info@vibedent.ru</div>
+        <div class="p1-contact"><span class="p1-contact-icon">💬</span>t.me/Vibedent</div>
+        <div class="p1-contact"><span class="p1-contact-icon">🌐</span>vibedent.ru</div>
+      </div>
+      <div class="p1-footer-qr">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfAAAAHwCAIAAADWzqqxAAAJEElEQVR4nO3cwW1bORhGUWvgMj0FeApKAyk0s42zUEBYxON/3znrQGAo+YKr7/H2+fEGwHz/XH0AAF5D0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIOL96gP86dePn1cfIeXx379XH+FbVn8Pq//f3Z9/Gn9fr3Xa78ELHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0g4rg99FWn7RHvtnvPevo+uL3v1zrt+91t+u/HCx0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIGL8Hvqq0/aOp+9N777P6fezyh79a512P7t5oQNECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRNxuD53XWt2bXt3Lnr6vfdr5afNCB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIsIfOF6t737s/f/ee+O7z7L5P+J0XOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAxO320O1Tv9bufXDf1yy+r2t5oQNECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRIzfQ1/d4+a53fvm0z9/t9PO7+9rFi90gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdICI4/bQT9unZha/n+fcT5sXOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAxOPt8+PqM3zx68fPpX9/t33n3fez+vnT7f79TL/Pu93P9J54oQNECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRBy3h77bafvLq3bvm0/fg77b97vb9Ptcddr9r/JCB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIeL/6AN9l73uWu31f0+3e31+1+zzTf59e6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEY+3z4+rz/DF9D3l0z6f5077fqeb/vs/7TyrvNABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASLerz7Ad+3eIz5t/9p+9yyn7YOftvd92p74dF7oABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AAR4/fQpzttD/q080x32r789P30VdPPv8oLHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gwh76X+zes979+bv3r6ebvn+96m6/51XT99O90AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIm63h37a3vdp+86rTjv/afvU08+z+/5XP/+085zGCx0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIOJ2e+irTtt3XnXaXvnd3O1+pu+Vn7Zfv8oLHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0g4vH2+XH1GTjI9L3p0/bHd+99n7bfPf3803mhA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANEvF99gD+dtmc93ere9O797ul769PZK39u+v14oQNECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRBy3h77qtD3i3e62F797n33VaedZ5e/luen344UOECHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAxfg99lX1qfjd93/y08+y2e998+n66FzpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QMTt9tBpO22fevreuvucxQsdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSDCHjrfsnsve/ee9er5d/9/T9sf3+2073f6froXOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAxO320O+2N73b6n709D3x3f/f6Xvcq/w9vpYXOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAxPg99LvtR+922n2etm9+mt1766fdv/3057zQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiHm+fH1efAYAX8EIHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeI+B8R+EbyEGJHHgAAAABJRU5ErkJggg==" alt="QR">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="label">⬛ ОБОРОТНАЯ СТОРОНА ⬛</div>
+<div class="sheet">
+
+  <!-- П4 — МОДУЛИ -->
+  <div class="panel p4">
+    <div>
+      <div class="panel-h">Всё для<br><em style="font-style:normal;color:var(--teal)">вашей клиники</em></div>
+      <div class="mod-grid">
+        <div class="mod"><div class="mod-i">📅</div><div class="mod-l">Расписание</div></div>
+        <div class="mod"><div class="mod-i">🦷</div><div class="mod-l">Зубная формула</div></div>
+        <div class="mod"><div class="mod-i">👥</div><div class="mod-l">Карточки пациентов</div></div>
+        <div class="mod"><div class="mod-i">💰</div><div class="mod-l">Финансы и оплаты</div></div>
+        <div class="mod"><div class="mod-i">📄</div><div class="mod-l">15+ документов</div></div>
+        <div class="mod"><div class="mod-i">📊</div><div class="mod-l">Аналитика и KPI</div></div>
+        <div class="mod"><div class="new-chip">NEW</div><div class="mod-i">💵</div><div class="mod-l">Расчёт зарплат</div></div>
+        <div class="mod"><div class="mod-i">📱</div><div class="mod-l">Мобильное приложение</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- П5 — КАК НАЧАТЬ -->
+  <div class="panel p5">
+    <div>
+      <div class="panel-h">Старт<br><em style="font-style:normal;color:var(--teal)">за 3 шага</em></div>
+      <div class="step-list">
+        <div class="step-card">
+          <div class="step-n">1</div>
+          <div><div class="step-t">Зарегистрируйтесь</div><div class="step-d">Перейдите на vibedent.ru — займёт 2 минуты</div></div>
+        </div>
+        <div class="step-card">
+          <div class="step-n">2</div>
+          <div><div class="step-t">Настройте клинику</div><div class="step-d">Добавьте врачей, кресла и каталог услуг за 15 минут</div></div>
+        </div>
+        <div class="step-card">
+          <div class="step-n">3</div>
+          <div><div class="step-t">Работайте эффективнее</div><div class="step-d">Больше пациентов, прозрачные финансы, меньше хаоса</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="free-block">
+      <span class="free-big">14 дней бесплатно</span>
+      <span class="free-sm">Без карты · Без обязательств</span>
+    </div>
+  </div>
+
+  <!-- П6 — CTA -->
+  <div class="panel p6">
+    <div class="p6-head">
+      <div class="p6-htitle">Попробуйте<br>бесплатно</div>
+      <div class="p6-hsub">14 дней без ограничений</div>
+    </div>
+    <div class="p6-body">
+      <div class="qr-wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfAAAAHwCAIAAADWzqqxAAAJDElEQVR4nO3cQY4bNxRF0SjozWYFWYNX4OVWprYHCogWUfy3zhkbAk2pLzh6r+u6/gJgvr/vPgAAnyHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4Q8XX3Af70+vnj7iOkXP/8e/cRvmX197D6/939+afx9/VZp/0evNABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASKO20Nfddoe8W6796yn74Pb+/6s077f3ab/frzQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEixu+hrzpt73j63vTu+5x+P6vs0X/Wafezmxc6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkDE4/bQ+azVvenVvezp+9qnnZ82L3SACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAh76Pxmde979+fv3hPffZ7d9wm/8kIHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4h43B66ferP2r0P7vuaxfd1Ly90gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdICI8Xvoq3vcvLd733z65+922vn9fc3ihQ4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEYIOEHHcHvpp+9TM4vfznvtp80IHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4h4Xdd19xl+8/r5Y+nfP23feff9rH7+dLt/P9Pv82n3M70nXugAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABHH7aHvdtr+8qrd++bT96Cf9v3uNv0+V512/6u80AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIr7uPsB32fue5Wnf13S79/dX7T7P9N+nFzpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QMTruq67z/Cb6XvKp30+7532/U43/fd/2nlWeaEDRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0R83X2A79q9R3za/rX97llO2wc/be/7tD3x6bzQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEixu+hT3faHvRp55nutH356fvpq6aff5UXOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhD30/7F7z3r35+/ev55u+v71qqf9nldN30/3QgeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiHjcHvppe9+n7TuvOu38p+1TTz/P7vtf/fzTznMaL3SACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gIjH7aGvOm3fedVpe+VP87T7mb5Xftp+/SovdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSACEEHiBB0gAhBB4gQdIAIQQeIEHSAiNd1XXefgYNM35s+bX989973afvd088/nRc6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkDE190H+NNpe9bTre5N797vnr63Pp298vem348XOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAxHF76KtO2yPe7Wl78bv32Veddp5V/l7em34/XugAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABGCDhAh6AARgg4QIegAEYIOECHoABHj99BX2afmV9P3zU87z267982n76d7oQNECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRDxuD5220/app++tu89ZvNABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASLsofMtu/eyd+9Zr55/9//3tP3x3U77fqfvp3uhA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANEPG4P/Wl707ut7kdP3xPf/f+dvse9yt/jZ3mhA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANECDpAhKADRAg6QISgA0QIOkCEoANEjN9Df9p+9G6n3edp++an2b23ftr9209/zwsdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSDidV3X3WcA4AO80AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASIEHSBC0AEiBB0gQtABIgQdIELQASL+A/EiXPohz6eJAAAAAElFTkSuQmCC" alt="QR vibedent.ru"></div>
+      <div class="qr-lbl">vibedent.ru</div>
+      <div class="bonuses">
+        <div class="bonus">
+          <div class="bonus-i">🎓</div>
+          <div><div class="bonus-t">Бесплатное обучение</div><div class="bonus-d">Обучим весь персонал за 1 неделю</div></div>
+        </div>
+        <div class="bonus">
+          <div class="bonus-i">🔄</div>
+          <div><div class="bonus-t">Перенос данных бесплатно</div><div class="bonus-d">Переедете с любой системы без потерь</div></div>
+        </div>
+      </div>
+      <div class="p6-contacts">
+        <div class="ct"><span class="ct-i">📞</span>+7 (928) 557-63-66</div>
+        <div class="ct"><span class="ct-i">✉️</span>info@vibedent.ru</div>
+        <div class="ct"><span class="ct-i">💬</span>t.me/Vibedent</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
