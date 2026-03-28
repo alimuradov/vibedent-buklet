@@ -38,26 +38,6 @@
       }
     };
 
-    async function downloadPdf() {
-      const imagePromises = Array.from(document.images).map((img) => {
-        if (img.complete && img.naturalWidth > 0) {
-          return Promise.resolve();
-        }
-
-        return new Promise((resolve) => {
-          const done = () => resolve();
-          img.addEventListener("load", done, { once: true });
-          img.addEventListener("error", done, { once: true });
-        });
-      });
-
-      const fontPromise = document.fonts ? document.fonts.ready : Promise.resolve();
-      await Promise.all([...imagePromises, fontPromise]);
-
-      requestAnimationFrame(() => {
-        setTimeout(() => window.print(), 120);
-      });
-    }
   </script>
   <style>
     @page {
@@ -159,13 +139,13 @@
 </head>
 <body class="bg-[#ccc] px-4 py-7 font-sans print:bg-white print:p-0">
 
-<button
-  type="button"
-  onclick="downloadPdf()"
+<a
+  href="./%D0%92%D0%B0%D0%B9%D0%B1%D0%94%D0%B5%D0%BD%D1%82%20%E2%80%94%20%D0%91%D1%83%D0%BA%D0%BB%D0%B5%D1%82.pdf"
+  download="ВайбДент — Буклет.pdf"
   class="export-button fixed right-4 top-4 z-50 rounded-full bg-[linear-gradient(135deg,#00695C,#009688)] px-5 py-3 text-sm font-bold text-white shadow-[0_10px_24px_rgba(0,105,92,0.22)] transition-transform hover:scale-[1.02] print:hidden"
 >
   Скачать PDF
-</button>
+</a>
 
 <div class="sheet-label my-5 mb-2 text-center text-xs font-extrabold uppercase tracking-[3px] text-[#666] print:hidden">⬛ ЛИЦЕВАЯ СТОРОНА ⬛</div>
 <div class="sheet sheet-page-1 mx-auto mb-[6px] flex h-[210mm] w-[297mm] overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.25)] print:mb-0 print:break-after-page print:shadow-none">
